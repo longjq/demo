@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+   
+<script type="text/javascript">
+function drawBeauty(beauty){
+    var mycv = document.getElementById("cv");  
+    var myctx = mycv.getContext("2d");
+    myctx.drawImage(beauty, 0, 0);
+}
+function load(){
+    var beauty = new Image();  
+    beauty.src = "http://images.cnblogs.com/cnblogs_com/html5test/359114/r_test.jpg"; 
+    if(beauty.complete){
+       drawBeauty(beauty);
+    }else{
+       beauty.onload = function(){
+         drawBeauty(beauty);
+       };
+       beauty.onerror = function(){
+         window.alert('美女加载失败，请重试');
+       };
+    };   
+}//load
+
+if (document.all) {
+      window.attachEvent('onload', load);  
+}else {  
+      window.addEventListener('load', load, false);
+}
+</script>
+</head>
+<body>
+    <button id="btn">click me</button>
+
+    <canvas id="cv" width="800" height="800"></canvas>
+</body>
+</html>
