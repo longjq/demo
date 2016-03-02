@@ -1,6 +1,6 @@
-<?php
-
-//定义一个抽象的读写类
+﻿<?php
+       
+//定义一个抽象的读写类www
 abstract class ParamHandler {
     protected $sourceFile;
     protected $params = [];
