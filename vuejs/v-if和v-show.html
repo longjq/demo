@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<link rel="stylesheet" href="/ccs/bootstrap.min.css">
+</head>
+<body>
+	
+
+<div id="app">
+	<div style="color:red;" v-show="!message">hello world!</div>
+	<textarea v-model="message"></textarea>
+	<button v-show="message">send message</button>
+	<pre>
+	{{ $data | json }}
+</pre>
+
+</div>
+
+
+<!-- 
+
+v-if和v-show的区别就是
+v-if会删除dom节点
+v-show只是隐藏节点
+
+ -->
+
+<script src="vue.js" type="text/javascript"></script>
+<script>
+new Vue({
+	el: "#app",
+	data: {
+		message: ""
+	}
+});
+</script>
+</body>
+</html>

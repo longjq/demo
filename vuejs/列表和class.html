@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+.completed{
+	text-decoration: line-through;
+}
+</style>
+</head>
+<body>
+	
+
+<div id="app">
+	
+<ul>
+	<!-- 
+	<li v-bind:class=" task.completed ? 'completed' : '' " v-for="task in tasks">{{ task.body }}</li>
+	 -->
+	<li @click="toggleTasks(task)" v-bind:class=" {'completed':task.completed} " v-for="task in tasks">{{ task.body }}</li>
+</ul>
+
+</div>
+
+
+<script src="vue.js" type="text/javascript"></script>
+<script>
+new Vue({
+	el: "#app",
+	data: {
+		tasks:[
+			{body:"hello world!1",completed:false},
+			{body:"hello world!2",completed:true},
+			{body:"hello world!3",completed:false}
+		]
+	},
+	methods: {
+		toggleTasks:function(task){
+			task.completed = !task.completed;
+		}
+	}
+	
+});
+</script>
+</body>
+</html>

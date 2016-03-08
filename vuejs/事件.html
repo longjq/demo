@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<link rel="stylesheet" href="/ccs/bootstrap.min.css">
+</head>
+<body>
+	
+
+<div id="app">
+	<form action="demo.html" @submit.prevent="count++">
+		<button type="submit"> submit {{ count }}</button>
+	</form>
+</pre>
+
+</div>
+
+<!-- 
+给被监听的dom节点添加事件
+<form action="demo.html" v-on:submit="submitForm">
+
+阻止默认行为版本，这样事件方法submitForm中，就可以去掉e.preventDefault();
+<form action="demo.html" v-on:submit.prevent="submitForm">
+
+使用@代替v-on:
+<form action="demo.html" @submit.prevent="submitForm">
+
+行内事件，count是data声明的一个属性
+<form action="demo.html" @submit.prevent="count++">
+
+
+ -->
+
+
+<script src="vue.js" type="text/javascript"></script>
+<script>
+new Vue({
+	el: "#app",
+	data : {
+		count : 0
+	},
+	methods: {
+		submitForm : function(e){
+			alert('submit');
+			//阻止默认行为
+			//e.preventDefault();
+		},
+		updateCount : function(){
+			alert(this.count);
+			this.count ++;
+		}
+	}
+});
+</script>
+</body>
+</html>

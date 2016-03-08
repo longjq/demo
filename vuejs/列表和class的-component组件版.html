@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+.completed{
+	text-decoration: line-through;
+}
+</style>
+</head>
+<body>
+	
+
+<div id="app">
+
+<task-app :task_fields_list="tasks"></task-app>
+	
+</div>
+
+<template id="task-template">
+	<h1>My Tasks <span v-show="remaining">({{ remaining }})</span></h1>
+	<ul>
+		<li 
+			@click="task.completed = !task.completed" 
+			v-bind:class=" {'completed':task.completed} " 
+			v-for="task in task_fields_list"
+		>
+			{{ task.body }}
+			<strong @click="deleteTask(task)">X</strong>
+		</li>
+	</ul>
+</template>
+<!-- 
+<li 
+			@click="toggleTasks(task)" 
+			v-bind:class=" {'completed':task.completed} " 
+			v-for="task in task_fields_list"
+		>
+ -->
+<script src="vue.js" type="text/javascript"></script>
+<script>
+Vue.component('task-app', {
+	template: '#task-template',
+	props: ['task_fields_list'],
+	methods:{
+		toggleTasks:function(task){
+			task.completed = !task.completed;
+		},
+		deleteTask:function(task){
+			this.task_fields_list.$remove(task);
+		}
+	},
+	computed:{
+		remaining:function(){
+			return this.task_fields_list.filter(function(task){
+				return ! task.completed;
+			}).length;
+		}
+	}
+});
+new Vue({
+	el: "#app",
+	data: {
+		tasks:[
+			{body:"hello world!1",completed:false},
+			{body:"hello world!2",completed:true},
+			{body:"hello world!3",completed:false}
+		]
+	}
+});
+</script>
+</body>
+</html>
