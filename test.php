@@ -8,7 +8,7 @@
 class SayHello
 
 {
-
+			
     //todo 没思路了，写了数据库访问而已，逻辑代码没写
     public function printHello()
 
