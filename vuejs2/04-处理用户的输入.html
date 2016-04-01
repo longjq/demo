@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <p>{{ message }}</p>
+    <button v-on:click="fx">Reverse Message</button>
+</div>
+
+<script src="http://cdn.jsdelivr.net/vue/1.0.20/vue.min.js"></script>
+<script>
+    new Vue({
+        el : '#app',
+        data : {
+            message : 'hello world!!!!'
+        },
+        methods : {
+            fx : function(){
+                this.message = this.message.split('').reverse().join('');
+            }
+        }
+    });
+</script>
+</body>
+</html>
