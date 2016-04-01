@@ -6,4 +6,3 @@ $a = array_map(function($v){
     return $v.'===';
 }, $arr);
 print_r($a);
- ?>

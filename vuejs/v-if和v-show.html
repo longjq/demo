@@ -9,7 +9,7 @@
 	
 
 <div id="app">
-	<div style="color:red;" v-show="!message">hello world!</div>
+	<div style="color:red;" v-if="!message">hello world!</div>
 	<textarea v-model="message"></textarea>
 	<button v-show="message">send message</button>
 	<pre>

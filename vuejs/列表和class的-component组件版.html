@@ -14,7 +14,7 @@
 
 <div id="app">
 
-<task-app :task_fields_list="tasks"></task-app>
+<task-app v-bind:task_fields_list="tasks"></task-app>
 	
 </div>
 
@@ -53,8 +53,8 @@ Vue.component('task-app', {
 	},
 	computed:{
 		remaining:function(){
-			return this.task_fields_list.filter(function(task){
-				return ! task.completed;
+			return this.task_fields_list.filter(function(xxx){
+				return ! xxx.completed;
 			}).length;
 		}
 	}

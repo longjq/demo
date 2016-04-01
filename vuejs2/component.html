@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<longjq name="longjq123" color="red"></longjq>
+		<longjq name="longjq456" color="blue"></longjq>
+	</div>
+
+<template id="my-template">
+	<h1 style="background: {{ color }};">{{ name }}</h1>
+	<button @click="count += 1">submit {{ count }}</button>
+</template>
+
+<script src="http://cdn.bootcss.com/vue/1.0.17/vue.js"></script>
+<script>
+Vue.component('longjq', {
+	template : '#my-template',
+	props : ['name', 'color'],
+	data : function(){
+		return { count : 0 };
+	}
+});
+
+	var vm = new Vue({
+		el : '#app',
+		data : {
+			message : 'hello world!'
+		}
+	});
+</script>	
+</body>
+</html>
