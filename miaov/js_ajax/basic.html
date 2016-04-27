@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+	<button id="btn">获取ajax信息</button>
+	<script>
+		var oBtn = document.getElementById('btn');
+		oBtn.onclick=function(){
+			/*
+			1.创建ajax对象(XMLHttpRequest)
+				ie6不支持，ie7以上支持
+				ie6使用new ActiveXObject('Microsoft.XMLHTTP');
+			*/
+			var xhr = null;
+			try{
+				xhr = new XMLHttpRequest();
+			}catch(e){
+				xhr = new new ActiveXObject('Microsoft.XMLHTTP');
+			}
+			/*
+			2.open方法
+				参数：method(使用get传中文时，需要先使用encodeURI(变量)进行转码)，url，[true=异步，false=阻塞]
+			  send方法
+			  	参数：data，要发送的数据
+			  	备注：post请求，需要设置请求头编码
+			  			xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+			*/
+			xhr.open('get','1.txt',true);
+			xhr.send();
+			/*
+			3.xhr对象的属性和方法
+				readyState属性：描述请求的状态
+					0=初始化，未调用open方法
+					1=载入，已调用send方法，正在发送请求
+					2=载入完成，send方法完成，已收到全部响应
+					3=解析，正在解析响应内容
+					4=完成，完成解析，可以在客户端使用了
+				responseText属性：返回的数据，类型是字符串类型
+				onreadystatechange方法（事件）：当readyState属性改变时，该方法被出发
+				status：服务器的状态码（1xx，2xx，3xx，4xx等http状态码）
+			*/
+			xhr.onreadystatechange = function(){
+				if (xhr.readyState == 4) {
+					
+					if (xhr.status == 200) {
+						alert(xhr.responseText);
+					}else{
+						alert(xhr.status);
+					}
+				};
+			}
+		};
+		/*
+		form表单属性
+			1、action
+			2、method
+			3、enctype
+				默认是application/x-www-form-urlencoded（发html代码时使用）
+				上传文件要修改为multipart/form-data（上传二进制文件使用，如图片，视频，音频等）
+				纯文本为text/plain（发邮件纯文本时使用）
+		*/
+	</script>
+</body>
+</html>
